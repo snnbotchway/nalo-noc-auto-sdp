@@ -2,3 +2,6 @@
 *.csv
 *.csv#
 *.vscode
+*.txt
+
+__pycache__/
