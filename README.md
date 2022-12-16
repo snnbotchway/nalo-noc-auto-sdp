@@ -6,9 +6,11 @@ Automatic SDP report generation.
 
 1. `git clone https://github.com/snnbotchway/nalo-noc-auto-sdp.git`
 
-2. `pip install --upgrade pip`
+2. `cd nalo-noc-auto-sdp`
 
-3. `pip install openpyxl`
+3. `pip install --upgrade pip`
+
+4. `pip install openpyxl`
 
 ## Usage
 
