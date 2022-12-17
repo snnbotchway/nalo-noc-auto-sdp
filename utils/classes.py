@@ -33,3 +33,9 @@ class Dates:
     """Get today's date in the format: DD/MM/YYYY"""
     today = datetime.now()
     todays_date_slashed = datetime.strftime(today, '%d/%m/%Y')
+
+
+class bcolors:
+    green = '\033[92m'
+    red = '\033[91m'
+    end = '\033[0m'
