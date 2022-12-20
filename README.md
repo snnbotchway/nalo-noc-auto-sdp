@@ -24,6 +24,6 @@ Automatic SDP report generation.
 
 5. Run `bash generate_report.sh`.
 
-6. The report along with its summary should appear in the output folder.
+6. The report along with its comparison should appear in the output folder.
 
-7. Complete the summary with data from spider.
+7. Complete the comparison with data from spider.

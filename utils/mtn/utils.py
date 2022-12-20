@@ -32,11 +32,16 @@ def calculate_count_and_revenue():
                 count = int(row[20])
                 revenue = row[19]
 
+                # Create new service instance if it does not exist
                 if not _exists(name):
                     service = Service(name, short_code)
                     services.append(service)
+                # Get service instance if it already exists
+                else:
+                    for _service in services:
+                        if _service.name in name:
+                            service = _service
                 service.update_count_and_revenue(count, revenue)
-
     return services
 
 
@@ -71,10 +76,10 @@ def process_main_report(services):
     return total_count, total_revenue
 
 
-def process_summary_report(total_count, total_revenue):
-    # Read, modify and overwrite contents of summary report.
+def process_comparison_report(total_count, total_revenue):
+    # Read, modify and overwrite contents of comparison report.
 
-    with open('./output/sdp_report.txt', "r") as file:
+    with open('./output/comparison_report.txt', "r") as file:
         # read a list of lines into data
         data = file.readlines()
         data[2] = f'MT 3701 MTN COMPARISON - {Dates.yesterdays_date_dashed_desc}\n'  # noqa
@@ -84,5 +89,5 @@ def process_summary_report(total_count, total_revenue):
         data[6] = '\n'
 
     # and write everything back
-    with open('./output/sdp_report.txt', 'w') as file:
+    with open('./output/comparison_report.txt', 'w') as file:
         file.writelines(data)

@@ -40,6 +40,13 @@ def calculate_count_and_revenue():
                 services.append(customer_service)
             _update_count_and_revenue(sheet, index, customer_service)
 
+        elif "Devotional Tips" in _cell_value(sheet, "D", index):
+            if not _exists("Devotional Tips"):
+                devotional_tips = Service(
+                    "Devotional Tips", _short_code(sheet, index))
+                services.append(devotional_tips)
+            _update_count_and_revenue(sheet, index, devotional_tips)
+
         elif "Engineering Jobs" in _cell_value(sheet, "D", index):
             if not _exists("Engineering Jobs"):
                 engineering_jobs = Service(
@@ -183,18 +190,18 @@ def process_main_report(services):
     return total_count, total_revenue
 
 
-def process_summary_report(total_count, total_revenue):
-    """Create and write to sdp_report.txt(Report summary)"""
+def process_comparison_report(total_count, total_revenue):
+    """Create and write to comparison_report.txt(Report comparison)"""
 
-    # Create summary report file.
-    with open("./output/sdp_report.txt", "x") as file:
+    # Create comparison report file.
+    with open("./output/comparison_report.txt", "x") as file:
         data = [None] * 16
         for index in range(16):
             data[index] = "\n"
         file.writelines(data)
 
-    # Read, modify and overwrite contents of summary report.
-    with open('./output/sdp_report.txt', "r") as file:
+    # Read, modify and overwrite contents of comparison report.
+    with open('./output/comparison_report.txt', "r") as file:
         # read a list of lines into data
         data = file.readlines()
         data[0] = 'SDP REPORT\n'
@@ -210,7 +217,7 @@ def process_summary_report(total_count, total_revenue):
         data[10] = f'vodafone: {total_revenue} / {total_count}\n'
 
     # and write everything back
-    with open('./output/sdp_report.txt', 'w') as file:
+    with open('./output/comparison_report.txt', 'w') as file:
         file.writelines(data)
 
 
@@ -235,7 +242,7 @@ def _get_active_sheet():
     """Return active sheet from yesterday's Vodafone revenue report."""
     xlsx_file = Path(
         './input/',
-        f'Daily NALO Revenue Report {Dates.yesterdays_date_dotted}.xlsx')
+        f'Daily NALO Revenue Report {Dates.todays_date_dotted}.xlsx')
     wb_obj = openpyxl.load_workbook(xlsx_file)
 
     return wb_obj.active

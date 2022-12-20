@@ -1,7 +1,6 @@
-*.xlsx
-*.csv
-*.csv#
-*.vscode
-*.txt
+*.xlsx*
+*.csv*
+*.vscode*
+*.txt*
 
 __pycache__/

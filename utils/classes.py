@@ -25,7 +25,6 @@ class Dates:
 
     # Get yesterday's date in different formats.
     yesterday = datetime.now() - timedelta(1)
-    yesterdays_date_dotted = datetime.strftime(yesterday, '%d.%m.%Y')
     yesterdays_date_dashed = datetime.strftime(yesterday, '%d-%m-%Y')
     yesterdays_date_dashed_desc = datetime.strftime(yesterday, '%Y-%m-%d')
     yesterdays_date_slashed = datetime.strftime(yesterday, '%d/%m/%Y')
@@ -33,6 +32,7 @@ class Dates:
     """Get today's date in the format: DD/MM/YYYY"""
     today = datetime.now()
     todays_date_slashed = datetime.strftime(today, '%d/%m/%Y')
+    todays_date_dotted = datetime.strftime(today, '%d.%m.%Y')
 
 
 class bcolors:

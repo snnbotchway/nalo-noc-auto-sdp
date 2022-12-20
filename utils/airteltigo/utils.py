@@ -31,7 +31,7 @@ def process_reports():
                 total_count += service.count
                 total_revenue += service.revenue
 
-    _process_summary_report(total_count, total_revenue)
+    _process_comparison_report(total_count, total_revenue)
 
 
 def _process_main_report(service):
@@ -58,11 +58,11 @@ def _process_main_report(service):
         )
 
 
-def _process_summary_report(total_count, total_revenue):
-    """Update summary report."""
+def _process_comparison_report(total_count, total_revenue):
+    """Update comparison report."""
 
-    # Read, modify and overwrite contents of summary report.
-    with open('./output/sdp_report.txt', "r") as file:
+    # Read, modify and overwrite contents of comparison report.
+    with open('./output/comparison_report.txt', "r") as file:
         # read a list of lines into data
         data = file.readlines()
         data[11] = '\n'
@@ -72,7 +72,7 @@ def _process_summary_report(total_count, total_revenue):
         data[15] = f'tigo: {total_revenue} / {total_count}\n'
 
     # and write everything back
-    with open('./output/sdp_report.txt', 'w') as file:
+    with open('./output/comparison_report.txt', 'w') as file:
         file.writelines(data)
 
 
