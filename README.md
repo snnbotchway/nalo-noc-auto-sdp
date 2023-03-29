@@ -22,7 +22,7 @@ Automatic SDP report generation.
 
 4. Ensure the MTN file's name is `Service_based_revenue_reportNalo.csv`.
 
-5. Run `bash generate_report.sh`.
+5. Run `bash process_reports.sh`.
 
 6. The report along with its comparison should appear in the output folder.
 
